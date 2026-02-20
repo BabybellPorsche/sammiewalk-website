@@ -16,6 +16,7 @@ export default function RouteMap({ geoJsonData, mapCenter, mapBounds }: RouteMap
                 <MapContainer
                     center={mapCenter}
                     bounds={mapBounds || undefined}
+                    boundsOptions={{ padding: [40, 40] }}
                     zoom={13}
                     scrollWheelZoom={false}
                     dragging={false}

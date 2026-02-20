@@ -59,12 +59,12 @@ export default function RouteContent({ route }: RouteContentProps) {
             {route.guidance_type === 'GPX_Only' && (
                 <FadeIn>
                     <h2 className={`${typography.h2} mb-6 flex items-center gap-3`}>
-                        <span className="w-8 h-8 rounded-full bg-accent/20 text-accent flex items-center justify-center">
+                        <span className="w-8 h-8 rounded-full bg-muted/30 text-muted-foreground flex items-center justify-center">
                             <MapIcon className="w-4 h-4" />
                         </span>
                         Enkel GPX Track
                     </h2>
-                    <div className={`bg-card border border-accent/20 ${borderRadius.container} p-6 border-l-4 border-l-accent shadow-accent/10 shadow-lg`}>
+                    <div className={`bg-card border border-border/20 ${borderRadius.container} p-6 border-l-4 border-l-primary/40`}>
                         <p className={`${typography.body} text-foreground`}>Deze route heeft geen borden ter plaatse en kan enkel gevolgd worden via de gedownloade GPX track op je smartphone of GPS-toestel.</p>
                     </div>
                 </FadeIn>
