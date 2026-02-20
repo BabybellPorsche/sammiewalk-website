@@ -12,7 +12,7 @@ function FitBounds({ bounds }: { bounds: L.LatLngBounds | null }) {
     const map = useMap();
     useEffect(() => {
         if (bounds) {
-            map.fitBounds(bounds, { padding: [30, 30], animate: false });
+            map.fitBounds(bounds, { padding: [15, 15], animate: false });
         }
     }, [map, bounds]);
     return null;
@@ -44,19 +44,11 @@ export default function RouteMap({ geoJsonData, mapCenter, mapBounds }: RouteMap
                             opacity: 0.85,
                             lineCap: 'round',
                             lineJoin: 'round',
-                            className: 'gpx-glow-effect'
                         }}
                     />
                 </MapContainer>
                 <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(10,10,10,1)] z-40" />
             </div>
-            <style>
-                {`
-                .gpx-glow-effect {
-                    filter: drop-shadow(0 0 4px rgba(255, 87, 34, 0.3));
-                }
-                `}
-            </style>
         </>
     );
 }
