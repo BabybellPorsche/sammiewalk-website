@@ -1,10 +1,21 @@
-import { MapContainer, GeoJSON } from 'react-leaflet';
+import { useEffect } from 'react';
+import { MapContainer, GeoJSON, useMap } from 'react-leaflet';
 import L from 'leaflet';
 
 interface RouteMapProps {
     geoJsonData: unknown;
     mapCenter: [number, number];
     mapBounds: L.LatLngBounds | null;
+}
+
+function FitBounds({ bounds }: { bounds: L.LatLngBounds | null }) {
+    const map = useMap();
+    useEffect(() => {
+        if (bounds) {
+            map.fitBounds(bounds, { padding: [30, 30], animate: false });
+        }
+    }, [map, bounds]);
+    return null;
 }
 
 export default function RouteMap({ geoJsonData, mapCenter, mapBounds }: RouteMapProps) {
@@ -15,8 +26,6 @@ export default function RouteMap({ geoJsonData, mapCenter, mapBounds }: RouteMap
             <div className="rounded-3xl overflow-hidden border border-border/10 relative bg-[#0a0a0a] shadow-sm h-[300px]">
                 <MapContainer
                     center={mapCenter}
-                    bounds={mapBounds || undefined}
-                    boundsOptions={{ padding: [40, 40] }}
                     zoom={13}
                     scrollWheelZoom={false}
                     dragging={false}
@@ -25,13 +34,14 @@ export default function RouteMap({ geoJsonData, mapCenter, mapBounds }: RouteMap
                     className="w-full h-full"
                     style={{ background: '#0a0a0a' }}
                 >
+                    <FitBounds bounds={mapBounds} />
                     <GeoJSON
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         data={geoJsonData as any}
                         style={{
-                            color: '#FF5722', // Neon Orange
+                            color: '#FF5722',
                             weight: 4,
-                            opacity: 0.8,
+                            opacity: 0.85,
                             lineCap: 'round',
                             lineJoin: 'round',
                             className: 'gpx-glow-effect'
@@ -43,7 +53,7 @@ export default function RouteMap({ geoJsonData, mapCenter, mapBounds }: RouteMap
             <style>
                 {`
                 .gpx-glow-effect {
-                    filter: drop-shadow(0 0 8px rgba(255, 87, 34, 0.6));
+                    filter: drop-shadow(0 0 4px rgba(255, 87, 34, 0.3));
                 }
                 `}
             </style>
