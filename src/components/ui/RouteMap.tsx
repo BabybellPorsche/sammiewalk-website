@@ -23,7 +23,7 @@ export default function RouteMap({ geoJsonData, mapCenter, mapBounds }: RouteMap
 
     return (
         <>
-            <div className="rounded-3xl overflow-hidden border border-border/10 relative bg-[#0a0a0a] shadow-sm h-[300px]">
+            <div className="rounded-3xl overflow-hidden border border-border/10 relative bg-background shadow-sm h-[300px]">
                 <MapContainer
                     center={mapCenter}
                     zoom={13}
@@ -32,7 +32,7 @@ export default function RouteMap({ geoJsonData, mapCenter, mapBounds }: RouteMap
                     zoomControl={false}
                     doubleClickZoom={false}
                     className="w-full h-full"
-                    style={{ background: '#0a0a0a' }}
+                    style={{ background: 'var(--background)' }}
                 >
                     <FitBounds bounds={mapBounds} />
                     <GeoJSON
@@ -44,11 +44,22 @@ export default function RouteMap({ geoJsonData, mapCenter, mapBounds }: RouteMap
                             opacity: 0.85,
                             lineCap: 'round',
                             lineJoin: 'round',
+                            className: 'gpx-glow-effect'
                         }}
                     />
                 </MapContainer>
-                <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(10,10,10,1)] z-40" />
+                <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_80px_hsl(var(--background))] z-40" />
             </div>
+            <style>
+                {`
+                .leaflet-container {
+                    background: var(--background) !important;
+                }
+                .gpx-glow-effect {
+                    filter: drop-shadow(0 0 8px rgba(255, 87, 34, 0.6));
+                }
+                `}
+            </style>
         </>
     );
 }
