@@ -39,7 +39,7 @@ export default function RouteMap({ geoJsonData, mapCenter, mapBounds }: RouteMap
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         data={geoJsonData as any}
                         style={{
-                            color: '#FF5722',
+                            color: '#4CAF50',
                             weight: 4,
                             opacity: 0.85,
                             lineCap: 'round',
@@ -56,7 +56,7 @@ export default function RouteMap({ geoJsonData, mapCenter, mapBounds }: RouteMap
                     background: var(--background) !important;
                 }
                 .gpx-glow-effect {
-                    filter: drop-shadow(0 0 10px rgba(255, 87, 34, 0.7)) drop-shadow(0 0 25px rgba(255, 87, 34, 0.3));
+                    filter: drop-shadow(0 0 8px rgba(76, 175, 80, 0.6)) drop-shadow(0 0 20px rgba(76, 175, 80, 0.2));
                 }
                 `}
             </style>
