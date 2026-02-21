@@ -23,7 +23,7 @@ export default function RouteMap({ geoJsonData, mapCenter, mapBounds }: RouteMap
 
     return (
         <>
-            <div className="rounded-3xl overflow-hidden border border-border/10 relative bg-background shadow-sm h-[300px]">
+            <div className="rounded-3xl overflow-hidden relative bg-background h-[300px]">
                 <MapContainer
                     center={mapCenter}
                     zoom={13}
@@ -56,7 +56,7 @@ export default function RouteMap({ geoJsonData, mapCenter, mapBounds }: RouteMap
                     background: var(--background) !important;
                 }
                 .gpx-glow-effect {
-                    filter: drop-shadow(0 0 8px rgba(255, 87, 34, 0.6));
+                    filter: drop-shadow(0 0 10px rgba(255, 87, 34, 0.7)) drop-shadow(0 0 25px rgba(255, 87, 34, 0.3));
                 }
                 `}
             </style>
