@@ -28,7 +28,7 @@ export default function RouteContent({ route }: RouteContentProps) {
                     <div className="flex flex-wrap gap-y-4 gap-x-2 items-center">
                         {route.nodes.map((node, i) => (
                             <div key={i} className="flex items-center">
-                                <span className="w-12 h-12 rounded-full border-2 border-primary text-primary flex items-center justify-center font-bold text-lg bg-primary/5 shadow-primary/20 shadow-lg">
+                                <span className="w-12 h-12 rounded-full border-2 border-primary text-primary flex items-center justify-center font-bold text-lg bg-primary/5">
                                     {node.id}
                                 </span>
                                 {i < (route.nodes?.length || 0) - 1 && (
@@ -50,7 +50,7 @@ export default function RouteContent({ route }: RouteContentProps) {
                         </span>
                         Bewegwijzering
                     </h2>
-                    <div className={`bg-card border border-primary/20 ${borderRadius.container} p-6 border-l-4 border-l-primary shadow-primary/10 shadow-lg`}>
+                    <div className={`bg-card border border-primary/20 ${borderRadius.container} p-6 border-l-4 border-l-primary`}>
                         <p className={`${typography.body} text-foreground`}>{route.guidance_text}</p>
                     </div>
                 </FadeIn>
@@ -64,7 +64,7 @@ export default function RouteContent({ route }: RouteContentProps) {
                         </span>
                         Enkel GPX Track
                     </h2>
-                    <div className={`bg-card border border-accent/20 ${borderRadius.container} p-6 border-l-4 border-l-accent shadow-accent/10 shadow-lg`}>
+                    <div className={`bg-card border border-accent/20 ${borderRadius.container} p-6 border-l-4 border-l-accent`}>
                         <p className={`${typography.body} text-foreground`}>Deze route heeft geen borden ter plaatse en kan enkel gevolgd worden via de gedownloade GPX track op je smartphone of GPS-toestel.</p>
                     </div>
                 </FadeIn>

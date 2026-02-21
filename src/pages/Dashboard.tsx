@@ -8,7 +8,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import RouteCard from '../components/ui/RouteCard';
 import RouteCardSkeleton from '../components/ui/RouteCardSkeleton';
 import AnimatedButton from '../components/ui/AnimatedButton';
-import { Compass, Sparkles } from 'lucide-react';
+import { Dog, ArrowRight, Sparkles } from 'lucide-react';
 import { typography, borderRadius, effects } from '../lib/styleguide';
 
 const containerVariants = {
@@ -32,7 +32,6 @@ export default function Dashboard() {
 
     const { scrollY } = useScroll();
     const heroY = useTransform(scrollY, [0, 500], [0, 200]);
-    const heroScale = useTransform(scrollY, [0, 500], [1, 1.1]);
     const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
 
     useEffect(() => {
@@ -86,12 +85,12 @@ export default function Dashboard() {
             <title>SammieWalk | Uitgelicht</title>
 
             {/* Immersive Premium Hero Section */}
-            <div className={`relative w-full h-[65vh] min-h-[500px] bg-black mb-12 md:mb-16 overflow-hidden flex flex-col justify-end ${borderRadius.max} rounded-t-none`}>
+            <div className={`relative w-full h-[65vh] min-h-[500px] bg-black mb-12 md:mb-16 overflow-hidden flex flex-col justify-end`}>
                 <motion.img
-                    src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2400&auto=format&fit=crop"
+                    src="/hero-cover.jpeg"
                     alt="Hero Background"
-                    style={{ y: heroY, scale: heroScale }}
-                    className="absolute inset-0 w-full h-full object-cover opacity-60 origin-bottom"
+                    style={{ y: heroY }}
+                    className="absolute inset-0 w-full h-full object-cover opacity-80 origin-bottom"
                 />
 
                 {/* Gradient overlay to seamlessly blend into background color */}
@@ -111,43 +110,69 @@ export default function Dashboard() {
                             initial="hidden" animate="show"
                             className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-sm font-semibold mb-6 ${effects.glass}`}
                         >
-                            <Sparkles className="w-4 h-4 text-primary line-clamp-1 dark:text-foreground" />
-                            <span>Ontdek de mooiste routes</span>
+                            <Dog className="w-4 h-4 text-primary line-clamp-1 dark:text-foreground" />
+                            <span>100% Winnie Approved</span>
                         </motion.div>
 
                         <motion.h1
                             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
                             initial="hidden" animate="show"
-                            className={`${typography.display} text-white mb-6 drop-shadow-xl`}
+                            className={`${typography.display} text-white mb-6`}
                         >
-                            Klaar om op pad te gaan?
+                            Mijn favoriete wandelroutes
                         </motion.h1>
 
                         <motion.p
                             variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}
                             initial="hidden" animate="show"
                             transition={{ duration: 0.8 }}
-                            className={`${typography.lead} text-white/90 mb-10 max-w-2xl drop-shadow-md`}
+                            className={`${typography.lead} text-white/90 mb-10 max-w-2xl`}
                         >
-                            Verken prachtige wandelpaden, vind verborgen parels en laat je verrassen door de natuur om je heen.
+                            Een collectie van mijn favoriete wandelingen in West- en Oost-Vlaanderen.
                         </motion.p>
 
                         <motion.div
                             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
                             initial="hidden" animate="show"
-                            className="flex flex-wrap items-center gap-4 pointer-events-auto"
+                            className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 pointer-events-auto"
                         >
-                            <Link to="/routes">
-                                <AnimatedButton size="lg" variant="primary" icon={<Compass className="w-5 h-5 md:w-6 md:h-6" />}>
-                                    Vind een wandeling
-                                </AnimatedButton>
+                            <Link to="/routes" className="w-full sm:w-auto relative z-20">
+                                <motion.div
+                                    whileHover="hover"
+                                    whileTap="tap"
+                                    variants={{
+                                        hover: { opacity: 0.9, transition: { duration: 0.2 } },
+                                        tap: { opacity: 0.8, transition: { duration: 0.1 } }
+                                    }}
+                                    className="group w-full relative flex items-center justify-center sm:justify-between gap-3 sm:gap-4 bg-primary text-primary-foreground h-14 pr-2 pl-2 sm:pl-6 rounded-full font-bold text-base transition-colors duration-150"
+                                >
+                                    <span className="relative z-10 pl-4 sm:pl-0">Vind een wandeling</span>
+
+                                    <motion.div
+                                        variants={{
+                                            hover: { x: 2, backgroundColor: "rgba(255,255,255,0.25)" }
+                                        }}
+                                        className="relative z-10 w-10 h-10 shrink-0 rounded-full bg-white/15 flex items-center justify-center transition-colors duration-300 ml-2 sm:ml-0"
+                                    >
+                                        <ArrowRight className="w-5 h-5" />
+                                    </motion.div>
+                                </motion.div>
                             </Link>
 
                             {randomRoute && (
-                                <Link to={`/route/${randomRoute.id}`}>
-                                    <AnimatedButton size="lg" variant="glass" className="border-white/20 hover:border-white/40 hover:bg-white/10 transition-all shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]">
-                                        Willekeurige route
-                                    </AnimatedButton>
+                                <Link to={`/route/${randomRoute.id}`} className="w-full sm:w-auto relative z-20">
+                                    <motion.div
+                                        whileHover="hover"
+                                        whileTap="tap"
+                                        variants={{
+                                            hover: { backgroundColor: "rgba(255,255,255,0.15)", transition: { duration: 0.2 } },
+                                            tap: { opacity: 0.8, transition: { duration: 0.1 } }
+                                        }}
+                                        className="group w-full relative flex items-center justify-center gap-2.5 bg-white/5 border border-white/20 text-white h-14 px-6 rounded-full font-bold text-base backdrop-blur-md transition-colors duration-150 hover:border-white/40 hover:bg-white/10"
+                                    >
+                                        <Sparkles className="w-5 h-5 text-white/70 group-hover:text-primary group-hover:rotate-12 transition-all duration-300" />
+                                        <span>Willekeurige route</span>
+                                    </motion.div>
                                 </Link>
                             )}
                         </motion.div>
@@ -163,16 +188,16 @@ export default function Dashboard() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                    className="flex items-center justify-between"
+                    className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6"
                 >
-                    <div>
-                        <h2 className={typography.h2}>Onze Nieuwste Routes</h2>
-                        <p className={`${typography.body} text-muted-foreground mt-2`}>Ontdek de recentste wandelingen die we voor je hebben gelopen.</p>
+                    <div className="max-w-xl">
+                        <h2 className={typography.h2}>Mijn nieuwste routes</h2>
+                        <p className={`${typography.body} text-muted-foreground mt-2`}>Ontdek de recentste wandelingen die Winnie en ik hebben gelopen.</p>
                     </div>
                     {user && (
-                        <Link to="/editor">
-                            <AnimatedButton variant="primary" icon={<PlusCircle className="w-4 h-4" />}>
-                                <span className="hidden sm:inline">Nieuwe Route</span>
+                        <Link to="/editor" className="w-full sm:w-auto shrink-0">
+                            <AnimatedButton variant="primary" icon={<PlusCircle className="w-5 h-5" />} className="w-full justify-center py-3.5">
+                                <span>Nieuwe Route</span>
                             </AnimatedButton>
                         </Link>
                     )}
@@ -214,7 +239,7 @@ export default function Dashboard() {
                                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
                                 className="mt-12 text-center pb-8 border-t border-border/10 pt-10"
                             >
-                                <h3 className="text-2xl font-bold mb-4">Honger naar meer?</h3>
+                                <h3 className="text-2xl font-bold mb-4">Meer routes zien?</h3>
                                 <div className="flex justify-center">
                                     <Link to="/routes">
                                         <AnimatedButton variant="secondary">

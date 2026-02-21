@@ -12,12 +12,12 @@ export const springConfig = {
 } as const;
 
 export const hoverConfig = {
-    // Standard interactive elements (buttons) - tactile premium lift
-    button: { y: -2, scale: 1.01 },
+    // Standard interactive elements (buttons) - simple matte hover
+    button: { opacity: 0.95 },
     // Emphasized interactive elements (primary buttons)
-    buttonEmphasized: { y: -2, scale: 1.01 },
+    buttonEmphasized: { opacity: 0.9 },
     // Cards and larger interactive areas
-    card: { scale: 1.01, y: -4 },
+    card: { y: -2 },
     // Image galleries and prominent visual elements
     image: { scale: 1.05 },
     // Sub-element icon wiggle (pure rotation, no scale)
@@ -25,12 +25,10 @@ export const hoverConfig = {
 };
 
 export const tapConfig = {
-    // Standard tap down effect
-    default: { scale: 0.96 },
-    // Sharp tap down (used with buttonEmphasized)
-    sharp: { scale: 0.94 },
-    // Gentle tap (used for cards)
-    gentle: { scale: 0.98 },
+    // Subtle opacity/brightness change for click feedback without scaling
+    default: { opacity: 0.8 },
+    sharp: { opacity: 0.7 },
+    gentle: { opacity: 0.9 },
 } as const;
 
 export const typography = {
@@ -65,5 +63,5 @@ export const borderRadius = {
 
 export const effects = {
     // Premium glassmorphism effect used on badges and floating items over images
-    glass: "backdrop-blur-md border border-white/20 shadow-lg",
+    glass: "backdrop-blur-md border border-white/20",
 } as const;

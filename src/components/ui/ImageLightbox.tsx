@@ -67,7 +67,7 @@ export default function ImageLightbox({ images, activeIndex, onChange }: ImageLi
                 key={activeIndex}
                 src={images[activeIndex]}
                 alt="Enlarged view"
-                className="max-w-full max-h-full object-contain rounded-xl shadow-2xl touch-none select-none"
+                className="max-w-full max-h-full object-contain rounded-xl touch-none select-none"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2 }}

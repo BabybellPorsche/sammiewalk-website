@@ -17,20 +17,20 @@ export default function RouteHero({ route, user, onDelete }: RouteHeroProps) {
     const navigate = useNavigate();
     const { scrollY } = useScroll();
     const heroY = useTransform(scrollY, [0, 500], [0, 150]);
-    const heroScale = useTransform(scrollY, [0, 500], [1, 1.1]);
+    //    const heroScale = useTransform(scrollY, [0, 500], [1, 1.1]);
 
     return (
         <div className="relative w-full h-[60vh] min-h-[400px] bg-black mb-8 md:mb-12 overflow-hidden">
             <motion.img
                 src={route.cover_photo_url || "https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?auto=format&fit=crop&w=2400&q=80"}
                 alt="Cover"
-                style={{ y: heroY, scale: heroScale }}
+                style={{ y: heroY }}
                 className="w-full h-full object-cover opacity-70 origin-bottom"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
 
             <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 max-w-[1600px] mx-auto w-full flex flex-col justify-end pointer-events-none">
-                <div className="inline-flex items-center gap-2 text-sm text-white/90 mb-5 pointer-events-auto bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full ring-1 ring-white/10 shadow-lg max-w-fit">
+                <div className="inline-flex items-center gap-2 text-sm text-white/90 mb-5 pointer-events-auto bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full ring-1 ring-white/10 max-w-fit">
                     <Link to="/" className="hover:text-white transition-colors flex items-center gap-1 font-medium">
                         <ArrowLeft className="w-4 h-4" /> Overzicht
                     </Link>
@@ -49,7 +49,7 @@ export default function RouteHero({ route, user, onDelete }: RouteHeroProps) {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ type: "spring", stiffness: 300, damping: 24 }}
-                            className={`${typography.h1} text-white mb-4 drop-shadow-lg break-all sm:break-normal`}
+                            className={`${typography.h1} text-white mb-4 break-all sm:break-normal`}
                         >
                             {route.title}
                         </motion.h1>
@@ -57,7 +57,7 @@ export default function RouteHero({ route, user, onDelete }: RouteHeroProps) {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ type: "spring", stiffness: 300, damping: 24 }}
-                            className="flex flex-wrap items-center gap-4 text-white/90 drop-shadow-md"
+                            className="flex flex-wrap items-center gap-4 text-white/90"
                         >
                             <span className="flex items-center gap-1.5 font-medium text-lg">
                                 <MapIcon className="w-5 h-5 text-primary" />

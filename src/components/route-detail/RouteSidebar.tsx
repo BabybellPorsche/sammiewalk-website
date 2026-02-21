@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Share2, Clock, Download, Navigation, LineChart, Star } from 'lucide-react';
+import { Share2, Clock, Download, Navigation, Star, Footprints, Mountain } from 'lucide-react';
 import RouteMap from '../ui/RouteMap';
 import AnimatedButton from '../ui/AnimatedButton';
 import { typography, borderRadius } from '../../lib/styleguide';
@@ -75,12 +75,12 @@ export default function RouteSidebar({ route, geoJsonData, mapCenter, mapBounds,
                 className="grid grid-cols-2 gap-4"
             >
                 {[
-                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M3 3v18h18" /><path d="m19 9-5 5-4-4-3 3" /></svg>, label: "Afstand", val: `${route.distance_km || 0} km` },
-                    { icon: <Clock className="w-5 h-5 stroke-[2.5]" />, label: "Duur", val: route.duration || (route.distance_km ? `${Math.floor(route.distance_km / 5) > 0 ? Math.floor(route.distance_km / 5) + 'h ' : ''}${Math.round((route.distance_km % 5) / 5 * 60)}m` : "--") },
-                    { icon: <LineChart className="w-5 h-5 stroke-[2.5]" />, label: "Niveau", val: route.difficulty },
+                    { icon: <Footprints className="w-5 h-5 stroke-[2.5]" />, label: "Afstand", val: `${route.distance_km || 0} km` },
+                    { icon: <Clock className="w-5 h-5 stroke-[2.5]" />, label: "Duur", val: route.duration || (route.distance_km ? `${Math.floor(route.distance_km / 5) > 0 ? Math.floor(route.distance_km / 5) + 'u ' : ''}${Math.round((route.distance_km % 5) / 5 * 60)}m` : "--") },
+                    { icon: <Mountain className="w-5 h-5 stroke-[2.5]" />, label: "Niveau", val: route.difficulty },
                     { icon: <Star className="w-5 h-5 stroke-[2.5] text-accent" />, label: "Sammiescore", val: route.sammiescore ? `${route.sammiescore}/10` : "--" },
                 ].map((stat, i) => (
-                    <motion.div key={i} variants={cardVariants} className={`bg-card border border-border/10 ${borderRadius.container} p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-shadow`}>
+                    <motion.div key={i} variants={cardVariants} className={`bg-card border border-border/10 ${borderRadius.container} p-6 flex flex-col items-center justify-center text-center`}>
                         <div className="w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center mb-3">
                             {stat.icon}
                         </div>

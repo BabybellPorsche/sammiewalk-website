@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export type RouteDifficulty = 'Easy' | 'Moderate' | 'Hard' | 'Expert';
 export type RouteType = 'GPX' | 'Nodes' | 'Both';
+export type Region = 'West-Vlaanderen' | 'Oost-Vlaanderen' | 'Andere';
 
 export const translateDifficulty = (difficulty: RouteDifficulty): string => {
     switch (difficulty) {
@@ -41,6 +42,7 @@ export interface Route {
     // Adding synthetic data for the MVP UI like the mock duration or stats
     duration?: string;
     surface?: string;
+    region?: Region;
 }
 
 export const mockRoutes: Route[] = [

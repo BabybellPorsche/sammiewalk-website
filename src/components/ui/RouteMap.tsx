@@ -32,31 +32,26 @@ export default function RouteMap({ geoJsonData, mapCenter, mapBounds }: RouteMap
                     zoomControl={false}
                     doubleClickZoom={false}
                     className="w-full h-full"
-                    style={{ background: 'var(--background)' }}
+                    style={{ background: '#1B211A' }}
                 >
                     <FitBounds bounds={mapBounds} />
                     <GeoJSON
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         data={geoJsonData as any}
                         style={{
-                            color: '#4CAF50',
-                            weight: 4,
-                            opacity: 0.85,
+                            color: '#628141',
+                            weight: 3,
+                            opacity: 1,
                             lineCap: 'round',
                             lineJoin: 'round',
-                            className: 'gpx-glow-effect'
                         }}
                     />
                 </MapContainer>
-                <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_80px_hsl(var(--background))] z-40" />
             </div>
             <style>
                 {`
                 .leaflet-container {
-                    background: var(--background) !important;
-                }
-                .gpx-glow-effect {
-                    filter: drop-shadow(0 0 8px rgba(76, 175, 80, 0.6)) drop-shadow(0 0 20px rgba(76, 175, 80, 0.2));
+                    background: #1B211A !important;
                 }
                 `}
             </style>

@@ -13,7 +13,7 @@ export default function NotFound() {
             </p>
             <Link
                 to="/"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-4 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-4 rounded-xl transition-colors"
             >
                 Terug naar Uitgelicht
             </Link>

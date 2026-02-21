@@ -13,6 +13,7 @@ export default function RouteEditor() {
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [difficulty, setDifficulty] = useState('Moderate'); // Initial state for new routes
+  const [region, setRegion] = useState('West-Vlaanderen'); // Initial state for region
   const [sammiescore, setSammiescore] = useState('');
   const [distanceKm, setDistanceKm] = useState('0');
   const [description, setDescription] = useState('');
@@ -44,6 +45,7 @@ export default function RouteEditor() {
         setTitle(data.title);
         setLocation(data.location);
         setDifficulty(data.difficulty);
+        setRegion(data.region || 'West-Vlaanderen');
         setSammiescore(data.sammiescore || '');
         setDistanceKm(data.distance_km ? data.distance_km.toString() : '0');
         setDescription(data.notes || '');
@@ -152,6 +154,7 @@ export default function RouteEditor() {
         title,
         location,
         difficulty,
+        region,
         notes: description,
         distance_km: parseFloat(distanceKm) || 0,
         nodes: parsedNodes,
@@ -252,6 +255,21 @@ export default function RouteEditor() {
                   placeholder="Gemeente, Regio"
                 />
               </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-muted-foreground">Regio *</label>
+                <select
+                  value={region}
+                  onChange={e => setRegion(e.target.value)}
+                  className="w-full bg-background border border-border/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all appearance-none cursor-pointer"
+                >
+                  <option value="West-Vlaanderen">West-Vlaanderen</option>
+                  <option value="Oost-Vlaanderen">Oost-Vlaanderen</option>
+                  <option value="Andere">Andere</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-muted-foreground">Niveau</label>
                 <select
@@ -386,12 +404,12 @@ export default function RouteEditor() {
           </h2>
 
           <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+            whileTap={{ opacity: 0.9 }}
             onDragOver={(e: React.DragEvent) => e.preventDefault()}
             onDrop={handleGpxDrop}
             className={`border-2 border-dashed transition-colors rounded-2xl p-12 flex flex-col items-center justify-center text-center mb-6 ${gpxFile
-              ? 'border-emerald-500/50 bg-emerald-500/10'
+              ? 'border-primary/50 bg-primary/10'
               : 'border-primary/30 bg-primary/5 hover:bg-primary/10 cursor-pointer'
               }`}
           >
@@ -401,8 +419,8 @@ export default function RouteEditor() {
 
             {gpxFile ? (
               <>
-                <h3 className="font-bold text-lg mb-1 text-emerald-400">Bestand toegevoegd!</h3>
-                <p className="text-emerald-400/80 text-sm max-w-sm">{gpxFile.name}</p>
+                <h3 className="font-bold text-lg mb-1 text-primary">Bestand toegevoegd!</h3>
+                <p className="text-primary/80 text-sm max-w-sm">{gpxFile.name}</p>
               </>
             ) : (
               <>
@@ -416,7 +434,7 @@ export default function RouteEditor() {
         </div>
       </div>
 
-      <div className="sticky bottom-24 md:bottom-8 z-40 mt-8 mb-24 md:mb-8 bg-card/90 backdrop-blur-xl border border-border/10 p-4 rounded-3xl flex justify-end gap-4 shadow-2xl">
+      <div className="sticky bottom-24 md:bottom-8 z-40 mt-8 mb-24 md:mb-8 bg-card/90 backdrop-blur-xl border border-border/10 p-4 rounded-3xl flex justify-end gap-4">
         <button
           type="button"
           onClick={() => navigate(-1)}
@@ -427,7 +445,7 @@ export default function RouteEditor() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="px-8 py-3 rounded-xl font-bold text-primary-foreground bg-primary hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 disabled:opacity-50"
+          className="px-8 py-3 rounded-xl font-bold text-primary-foreground bg-primary hover:bg-primary/90 transition-colors disabled:opacity-50"
         >
           {isSubmitting ? (id ? 'Updaten...' : 'Opslaan...') : (id ? 'Route Updaten' : 'Route Opslaan')}
         </button>

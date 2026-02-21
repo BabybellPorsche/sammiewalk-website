@@ -49,7 +49,7 @@ export default function Layout() {
         <div className="flex h-screen w-full bg-background text-foreground overflow-hidden">
             <aside className="w-64 border-r border-border/10 bg-card hidden md:flex flex-col">
                 <Link to="/" className="p-6 pb-12 flex items-center gap-3 hover:opacity-80 transition-opacity">
-                    <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/30">
+                    <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-primary-foreground">
                         <Map className="w-5 h-5 text-white/90" />
                     </div>
                     <div>
@@ -85,7 +85,7 @@ export default function Layout() {
                                         <AnimatedButton
                                             variant={isActive ? "primary" : "ghost"}
                                             icon={<item.icon className="w-5 h-5" />}
-                                            className={`w-full justify-start ${isActive ? 'shadow-lg shadow-primary/20' : ''}`}
+                                            className={`w-full justify-start`}
                                         >
                                             {item.label}
                                         </AnimatedButton>
@@ -114,7 +114,7 @@ export default function Layout() {
                 <header className={`h-16 border-b border-border/10 flex items-center justify-between px-4 md:px-6 shrink-0 bg-background z-30 relative ${!user ? 'md:hidden' : ''}`}>
                     <div className="flex items-center gap-2 md:hidden">
                         <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                            <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/30">
+                            <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-primary-foreground">
                                 <Map className="w-5 h-5 text-white/90" />
                             </div>
                             <h1 className="font-bold text-xl tracking-tight leading-none text-foreground">SammieWalk</h1>
@@ -153,7 +153,7 @@ export default function Layout() {
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.8, y: 20 }}
                                 onClick={scrollToTop}
-                                className="fixed bottom-24 md:bottom-8 right-6 md:right-8 z-50 p-4 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/30 hover:bg-primary/90 transition-colors pointer-events-auto"
+                                className="fixed bottom-24 md:bottom-8 right-6 md:right-8 z-50 p-4 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors pointer-events-auto"
                                 aria-label="Terug naar boven"
                             >
                                 <ArrowUp className="w-5 h-5" />

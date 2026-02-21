@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Clock, Heart, Navigation } from 'lucide-react';
+import { MapPin, Clock, Heart, Footprints } from 'lucide-react';
 import { useFavorites } from '../../hooks/useFavorites';
 import type { Route as RouteType } from '../../lib/data';
 import { motion } from 'framer-motion';
@@ -26,10 +26,10 @@ export default function RouteCard({ route, onClick }: RouteCardProps) {
             initial="idle"
             variants={{
                 idle: { y: 0 },
-                hover: { y: -8 }
+                hover: { y: -2 }
             }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className={`group h-full flex flex-col bg-card ${borderRadius.container} overflow-hidden border border-border/10 hover:border-primary/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]`}
+            transition={{ duration: 0.2 }}
+            className={`group h-full flex flex-col bg-card ${borderRadius.container} overflow-hidden border border-border/10 hover:border-primary/50 transition-colors duration-300`}
         >
             <div className="relative h-56 overflow-hidden">
                 <motion.img
@@ -79,7 +79,7 @@ export default function RouteCard({ route, onClick }: RouteCardProps) {
                 <div className="mt-auto pt-4 border-t border-border/10 flex items-center justify-between text-sm font-medium">
                     <div className="flex items-center gap-1.5 text-foreground whitespace-nowrap">
                         <span className="w-6 h-6 rounded-md bg-primary/10 text-primary flex items-center justify-center">
-                            <Navigation className="w-3.5 h-3.5" />
+                            <Footprints className="w-4 h-4" />
                         </span>
                         <span>{route.distance_km || 0} km</span>
                     </div>

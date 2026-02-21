@@ -30,9 +30,9 @@ export default function Login() {
 
     return (
         <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
-            <div className="w-full max-w-md bg-card border border-border/10 rounded-3xl p-8 shadow-xl">
+            <div className="w-full max-w-md bg-card border border-border/10 rounded-3xl p-8">
                 <div className="flex justify-center mb-8">
-                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/50">
+                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground">
                         <Map className="w-6 h-6" />
                     </div>
                 </div>
@@ -76,7 +76,7 @@ export default function Login() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full px-6 py-3 mt-4 rounded-xl font-bold text-primary-foreground bg-primary hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full px-6 py-3 mt-4 rounded-xl font-bold text-primary-foreground bg-primary hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         {loading ? 'Bezig met inloggen...' : 'Inloggen'}
                     </button>

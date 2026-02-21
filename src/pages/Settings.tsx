@@ -32,7 +32,7 @@ export default function Settings() {
                     </div>
 
                     <div className="pt-6 border-t border-border/10">
-                        <button className="px-6 py-3 rounded-xl font-bold text-primary-foreground bg-primary hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+                        <button className="px-6 py-3 rounded-xl font-bold text-primary-foreground bg-primary hover:bg-primary/90 transition-colors">
                             Save Changes
                         </button>
                     </div>
