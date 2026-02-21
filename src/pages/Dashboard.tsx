@@ -215,11 +215,13 @@ export default function Dashboard() {
                                 className="mt-12 text-center pb-8 border-t border-border/10 pt-10"
                             >
                                 <h3 className="text-2xl font-bold mb-4">Honger naar meer?</h3>
-                                <Link to="/routes">
-                                    <AnimatedButton variant="secondary">
-                                        Ontdek alle wandelingen
-                                    </AnimatedButton>
-                                </Link>
+                                <div className="flex justify-center">
+                                    <Link to="/routes">
+                                        <AnimatedButton variant="secondary">
+                                            Ontdek alle wandelingen
+                                        </AnimatedButton>
+                                    </Link>
+                                </div>
                             </motion.div>
                         )}
                     </>
